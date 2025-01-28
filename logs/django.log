@@ -1,1 +1,5 @@
 [2025-01-28 08:26:41] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-01-28 10:07:13] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2025-01-28 10:07:18] INFO django.server "GET / HTTP/1.1" 302 0
+[2025-01-28 10:07:18] INFO django.server "GET /admin/ HTTP/1.1" 302 0
+[2025-01-28 10:07:18] INFO django.server "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3818
