@@ -3,3 +3,4 @@
 [2025-01-28 10:07:18] INFO django.server "GET / HTTP/1.1" 302 0
 [2025-01-28 10:07:18] INFO django.server "GET /admin/ HTTP/1.1" 302 0
 [2025-01-28 10:07:18] INFO django.server "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3818
+[2025-01-31 08:03:40] INFO django.utils.autoreload Watching for file changes with StatReloader
