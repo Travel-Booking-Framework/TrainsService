@@ -52,7 +52,7 @@ class Train(models.Model):
     base_price = models.BigIntegerField()  # قیمت پایه
     tax = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # مالیات به صورت درصد
     discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # تخفیف به صورت درصد
-    final_price = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    final_price = models.BigIntegerField()
 
     def __str__(self):
         return f"{self.train_number} ({self.train_type})"
