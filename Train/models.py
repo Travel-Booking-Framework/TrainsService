@@ -1,4 +1,11 @@
 from django.db import models
+from enum import Enum
+
+
+class TrainType(Enum):
+    COUPE_4_SEATER = "Coupe 4-seater"
+    BUS_STYLE = "Bus-style"
+    COUPE_6_SEATER = "Coupe 6-seater"
 
 
 class Station(models.Model):
@@ -33,19 +40,16 @@ class TrainHall(models.Model):
 
 class Train(models.Model):
     """Train Table"""
-    TRAIN_TYPES = [
-        ('4_coupe', 'Coupe 4-seater'),  # کوپه‌ای ۴ نفره
-        ('bus', 'Bus-style'),          # اتوبوسی
-        ('6_coupe', 'Coupe 6-seater'), # کوپه‌ای ۶ نفره
-    ]
-
     train_number = models.CharField(max_length=50, unique=True)  # شماره قطار
     departure_datetime = models.DateTimeField()  # تاریخ و ساعت حرکت
     arrival_datetime = models.DateTimeField()  # تاریخ و ساعت رسیدن
     departure_station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name='departures')  # ایستگاه مبدا
     arrival_station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name='arrivals')  # ایستگاه مقصد
     railway_company = models.ForeignKey(RailwayCompany, on_delete=models.CASCADE)  # شرکت حمل‌ونقل ریلی
-    train_type = models.CharField(max_length=20, choices=TRAIN_TYPES)  # نوع قطار
+    train_type = models.CharField(
+        max_length=20,
+        choices=[(tag.name, tag.value) for tag in TrainType]
+    )
     capacity = models.IntegerField()  # ظرفیت قطار
     hall = models.ForeignKey(TrainHall, on_delete=models.CASCADE)  # نوع سالن
     stars = models.IntegerField(default=3)  # تعداد ستاره‌های قطار
